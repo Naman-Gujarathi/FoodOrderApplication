@@ -1,0 +1,10 @@
+html:5  emmit : create biler plate code
+drag and drop project in vs code to open it
+with javascript you can create and control html code
+with react you can manipulate html DOM and it is possible due to render()
+props are attributes and childrens
+
+React elemtents are javascript object which has props (children)
+
+
+1 hour
