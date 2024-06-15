@@ -7,4 +7,190 @@ props are attributes and childrens
 React elemtents are javascript object which has props (children)
 
 
-1 hour
+Lecture -2 Igniting our app
+
+Before sending Code to production we need to perform bundling,code splitting, chunking, image optimization, compression
+minify code, remove comments
+
+
+bundlers: webpack, parcel, weet
+
+1.Parcel create local server it host app on server
+2. Parcel is refreshing page (HMR : Hot Module Replacement), Parcel uses File Watching Algorithm
+3. Parcel does faster build, parcel is caching
+4. Image Optimization
+5. bundling
+6. minification
+7. compression
+8. Dev build
+9. Consistent Hashing
+10. code splitting
+11. Differential Bundling : to support older browser
+12. Diagonostic and Good Error Handling
+13. provide host enviourmnet on HTTPS
+14. Tree Shaking Algorithm : remove unused code 
+15. Different dev and production build (generally production build takes more time as it need to perform optimization)
+
+two types of dependencies:
+
+Dev dependency : it generally require in development
+Depenedency: It can be used in both development and production
+
+ "parcel": "^2.10.3" caret ^, it will automatically do minor upgrade to parcel for ex 2.10.3 to 2.10.4
+ "parcel": "~2.10.3" ~ tilda, it will automatically do major upgrades but generally not recommendedfor for ex 2.10.3 to 3.0.1
+
+ package.json keep tract of version installed
+ package-lock.json keep track of exact version installed
+ integrity :hash present (it verifies that same version is installed in production as in development ) 
+
+ node modules contains Tansitive Dependency or Dependency Tree
+
+
+ whenever we run a application using parcel npx parcel index.html it create a development build **dist** and host into 1234
+ whenver we refresh the page it uses .parcel-cache using Hot Module Replacement
+
+Keep  .parcel-cache, dist and node_module in .gitignore
+ .parcel-cache and  dist can be gnerated using npx parcel index.html (development) OR npx parcel build index.html (production)
+  and node_module can be reganerated therefore we put it in .gitignore
+
+
+  Lecture -3 Laying the Foundation
+
+script in package.json
+
+npm run start ==== npm start
+npm run build 
+
+
+React and JSX are different 
+
+JS engine doest not understand JSX, JS engine understand Echma Script (Pure JavaScript)
+
+code written by developer in JSX get transpile(converted to code Browser understand) to React by Babel managed by Parcel before JS engine reads it
+
+JSX ---Babel----> React---> javascript---> HTML element
+
+in JSX we write it in camelcase but not in HTML
+in JSX we write className but in htlm class
+
+Two ways of Component:
+
+Class Based Componenet - OLD
+Funstional Component - NEW   a function  returns JSX code/ react element is called funstional Component
+
+whenever creating Component start with Uppercase Leter
+
+Lecture -3 Laying the FOundation
+
+Passing prop to component is similar to pass arguement to function
+
+*** ConfigDriven UI : controlling UI using data/config
+
+whenever we are doing .map we have to always give a key={}
+
+React doesnt recommend index for keys
+
+Lecture -4 Talk is cheap
+
+to pass inline style in JSX we have to pass javascript object as style to indicate we are writing javascript object we use {}. However instyle it is not followed in industry
+
+Good Practise keep file name as same component which will be present in that file
+
+Never Keep HardCoded code in componenet folder
+
+use default export when we want to export one thing
+
+when we want to export multiple thing use named export
+for ex :- 
+export const Component = ()=> {
+
+}
+
+use destructuring 
+import {Componenet} from "path"
+
+Lecture 5 Lets get Hooked
+
+useState: whenever state variable change react re-render the component
+
+React is good in DOM operation
+
+Reconciliation Algorithm (React Fiber) :  
+
+DOM is all tags that we see in Inspect  elements 
+Virtual DOM is represnetation of actual DOM , it is javascript object
+
+
+Diff Algorithm : Difference between Updated b/w updated and previous virtual DOM
+
+React will find out difference between previous object (Virtual DOM ) and current object (Virtual DOM) and after finding difference it updates the DOM
+
+ Current Virtual DOM (object) - previous Virtual DOM (obejct) than react will apply it to DOM
+
+ why react is fast ?
+ React effieciently DOM manipulation 
+  react can effieciently find out difference between virtual DOM uisng diff algorithm and update UI
+
+
+Lecture 6 Exploring the world
+
+** Monolith Architecure: 
+
+API, UI code, Authentication, Database Connectivity, SMS all in one project
+
+**  Microservice Architecture
+
+Different services for differnet job
+
+1. Backend servicesUI services  namastedev/api
+2. DB services
+3. Authentication services
+4. SMS services                 namastedev/sms
+5. Email Service
+6. UI serivce                    namastedev/
+
+All the services run on their specific port and all these port can be mapped to domain name
+if UI service want to interact with Backend Serivce it will call namastedev/api
+
+
+
+This is know as "Separation of Concerns" and "Single Responsibility principle" means each and every serice has its own
+job.
+
+All of the teams working on their independent service project 
+for ex: backend team is differnet they have their own deployment cycle
+
+UI can be in React, Backend can be in java, Databse can be in python, SMS can be in GO language
+
+why these languaes, tech stack are choosen ? depending on the UseCase
+
+Different way to Interact with Backend
+1.when our app loads we can make an api call and wait for data (for ex 5000 ms) to come and render the UI
+   Load----> API Call -----> Render
+
+   Page loads after API call which will take time and show everything 
+
+2. As soon as page loads we will render UI after that  we will make api call as we get result API we will re-render with new data
+  Load ---> Render -----> API call ----> ReRender
+
+  In secand approach our application shows skeleton on website and slowly website loads after api call
+  Even though we are rendering twice it doesnt matter
+
+
+  Use Effect :
+  First Componenet will render and then useEffect will render
+
+
+  CORS policy : Browser chrome is not allowing us to call api from one origin to other origin (Origin mismatch)
+
+props: it is object
+       properites which can be passed to components
+       whenver we have to pass dynamic data we will use props
+
+Config driven UI : 
+Controlling UI using data from backend
+website is driven by config or data
+
+Caorusel : it is UI component that is used to display a series of content items
+
+whenever looping using .map always pass the key to uniquely identify it
