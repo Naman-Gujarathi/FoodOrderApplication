@@ -1,3 +1,4 @@
-# This is react project
 
-Component is javascript function which return JSX
+# FoodOrderApplication
+React.js based project to order food from restaurant
+
