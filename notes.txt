@@ -194,3 +194,70 @@ website is driven by config or data
 Caorusel : it is UI component that is used to display a series of content items
 
 whenever looping using .map always pass the key to uniquely identify it
+
+PROJECT STRUCTURE (no predenined strucutre but default is to create component folder and put functional componenet file)
+keep componenet name same as your file name its a good convention
+Use any extension js or jsx its same for file name
+
+import "./components/Header.jsx"; OR  import "./components/Header"; OR import "./components/Header.js";
+here js or jsx depends on file extension used
+Default -> import "./components/Header";
+
+Two ways to import export
+1. Default 
+export default resList; (one file we can have only one default export)
+import resList from " "
+2. named
+ Used when in single file we have to export multiple thing
+importing from name export is slightly different named import use {} 
+
+export const resList;
+import {resList} from "";
+
+# React Hooks
+normal javascript utility functions 
+useState() - it is fucntion which give superpowerful react varible
+local state variable scope is inside the component
+const [variable] = useState([]) // create a variable which is powerfull
+([]) here [] is default value
+
+use stae keep the ui layer in sync with data layer
+whenever the state variable get update react re render the component
+
+
+React uses Reconciliation Algorithm (React Fiber) 
+
+Actual DOM example 
+<div>
+  <img>
+</div>
+
+Virtual Dom is representation of actual DOM 
+
+React Virtual DOM is javascript object
+Diff Algorithm it find difference between update virtual DOM and previous virtual DOM
+
+
+useState return array of index 2
+
+what is useState ? 
+
+useState is Javascript utility function which return an array of statevairable and function which is responsible
+for updating the state variable. Whenever state variable get update it uses concept of diff algorithm
+where it find the difference between virtulal DOM ( currentDOM (JavaScript object) and previous DOM (Javascript Object) )
+ and update the UI
+
+ --------------------------
+
+ Two ways to fetch data 
+
+ 1. as soon as the  app/page loads make an api call to fetch data and render it on to UI
+ load -> API call (wait for data to come) - > render
+ 2. Load -> Render -> API Call -> Re Render with new data
+
+ UseEffect call back function is called after the compoent renders 
+
+ fetch() is given by JS engine
+
+broswer is not allowing us to call api from one origin (Swiggy api) to another origin (local host)
+
